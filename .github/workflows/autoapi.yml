@@ -1,0 +1,59 @@
+#自动调用API保活，加密版
+name: MS Office AutoSubscribeService with GitHub
+
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+  schedule:
+    - cron: "12 * * * *"
+  watch:
+    types: [started]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Set up Python #安装python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install requests #安装requests
+      run: |
+        pip install requests
+    - name: Read config from secrets  #读取机密
+      env: 
+        CONFIG_ID: ${{ secrets.CONFIG_ID }} # secrets_id 提供
+        CONFIG_KEY: ${{ secrets.CONFIG_KEY }} # secrets_key 提供
+      run: | 
+        cp main.py temp.py
+        echo $CONFIG_ID > configid.txt
+        echo $CONFIG_KEY > configkey.txt
+        sed -i '10 r configid.txt' temp.py
+        sed -i '12 r configkey.txt' temp.py
+    - name: Test Api #Api调用
+      run: | 
+        echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
+        python temp.py
+    - name: Delete secrets config #删除机密
+      run: | 
+        rm -f temp.py
+        rm -f configid.txt
+        rm -f configkey.txt    
+    - name: Commit #上传新的refresh_token到仓库
+      run: |
+        git config --global user.email zhtok@foxmail.com
+        git config --global user.name MSOfficeAutoSubscribeService
+        git add .
+        git commit -m "Update new refresh token with MSO_E5_Dev_AutoRenew_Modified" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
