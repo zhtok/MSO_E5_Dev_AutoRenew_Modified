@@ -7,7 +7,7 @@ on:
     branches: 
       - main
   schedule:
-    - cron: '30 */2 * * *'
+    - cron: '30 */3 * * *'
   watch:
     types: [started]
    
