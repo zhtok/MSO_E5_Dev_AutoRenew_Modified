@@ -4,10 +4,8 @@ on:
   release:
     types: [published]
   push:
-    tags:
-    - 'v*'
-  #  branches: 
-  #    - master
+    branches: 
+      - master
   schedule:
     - cron: "12 * * * *"
   watch:
@@ -32,7 +30,7 @@ jobs:
         CONFIG_ID: ${{ secrets.CONFIG_ID }} # secrets_id 提供
         CONFIG_KEY: ${{ secrets.CONFIG_KEY }} # secrets_key 提供
       run: | 
-        cp main.py 2.py
+        cp 1.py 2.py
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
         sed -i '10 r configid.txt' 2.py
@@ -48,8 +46,8 @@ jobs:
         rm -f configkey.txt    
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email autosubscribeservice@chrisvcg.top
-        git config --global user.name AutosubScribeService
+        git config --global user.email testapi@chrisvcg.top
+        git config --global user.name testApi
         git add .
         git commit -m "update new refresh_token" -a
     - name: Push changes
