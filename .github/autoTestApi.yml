@@ -1,4 +1,4 @@
-name: TestAutoSubscribeService
+name: Auto Test MS Graph API
 
 on: 
   release:
@@ -7,7 +7,7 @@ on:
     branches: 
       - main
   schedule:
-    - cron: '12 */3 * * *'
+    - cron: '30 */2 * * *'
   watch:
     types: [started]
    
