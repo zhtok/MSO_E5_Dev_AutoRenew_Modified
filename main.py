@@ -12,7 +12,7 @@ import json,sys,time
 
 
 
-path=sys.path[0]+r'/Secret.txt'
+path=sys.path[0]+r'/1.txt'
 num1 = 0
 
 def gettoken(refresh_token):
@@ -61,7 +61,7 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',headers=headers).status_code == 200:
             num1+=1
             print('6调用成功'+str(num1)+'次')    
-        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',headers=headers).status_code == 200:
+        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',headers=headers).status_code == 200:
             num1+=1
             print('7调用成功'+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root/children',headers=headers).status_code == 200:
@@ -80,5 +80,5 @@ def main():
     except:
         print("pass")
         pass
-for _ in range(3):
+for _ in range(5):
     main()
