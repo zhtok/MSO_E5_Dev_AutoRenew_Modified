@@ -1,4 +1,5 @@
-name: MS Office AutoSubscribeService with GitHub
+#自动调用api保活，加密版
+name: Auto Api Task
 
 on: 
   release:
@@ -7,14 +8,14 @@ on:
     branches: 
       - master
   schedule:
-    - cron: "12 * * * *"
+    - cron: '12 */3 * * *'
   watch:
     types: [started]
    
 jobs:
    Task:
     runs-on: ubuntu-22.04
-    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+#    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
     steps:
     - name: Checkout
       uses: actions/checkout@master
@@ -46,7 +47,7 @@ jobs:
         rm -f configkey.txt    
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email testapi@chrisvcg.top
+        git config --global user.email testApi@chrisvcg.top
         git config --global user.name testApi
         git add .
         git commit -m "update new refresh_token" -a
