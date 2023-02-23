@@ -18,5 +18,6 @@ GitAction Skipped Problem(https://github.com/zhtok/MSO_E5_Dev_AutoRenew_Modified
 
 Major changes are made:
 - From ```main.py``` to ```test.py```
+- New ```autoTestApi.yml```
 - From ```ubuntu-latest``` to ```ubuntu-22.04```
 - From ```actions/setup-python@v2``` to ```actions/setup-python@v4```
