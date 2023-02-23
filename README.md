@@ -9,3 +9,14 @@ Use at your own risk.
 The author DO NOT provide help or further assistance for personal reasons.
 
 Please DO NOT open issues or PR over this project, I do not have enough time to respond due to personal reasons, thanks for understanding.
+
+# Update
+## 2023-02-24 0:36
+GitAction Skipped Problem(https://github.com/zhtok/MSO_E5_Dev_AutoRenew_Modified/issues/4) fixed. (thanks for notifying)
+- Nodejs version is incapable with the code in ```main.py```. 
+- Certain MS Graph APIs are updated with slightly changes.
+
+Major changes are made:
+- From ```main.py``` to ```test.py```
+- From ```ubuntu-latest``` to ```ubuntu-22.04```
+- From ```actions/setup-python@v2``` to ```actions/setup-python@v4```
