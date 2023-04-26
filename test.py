@@ -52,7 +52,7 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/drive/root',headers=headers).status_code == 200:
             num1+=1
             print('3调用成功'+str(num1)+'次')
-        if req.get(r'https://graph.microsoft.com/v1.0/users ',headers=headers).status_code == 200:
+        if req.get(r'https://graph.microsoft.com/v1.0/users',headers=headers).status_code == 200:
             num1+=1
             print('4调用成功'+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/messages',headers=headers).status_code == 200:
