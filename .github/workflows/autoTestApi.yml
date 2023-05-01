@@ -49,7 +49,7 @@ jobs:
         git config --global user.email chrisvcg_msdev@outlook.com
         git config --global user.name chrisvcg_msdev
         git add .
-        git commit -m "update new refresh token with testApiBot" -a
+        git commit -m "update new refresh token with GitAction" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
