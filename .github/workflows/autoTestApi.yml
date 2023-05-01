@@ -8,8 +8,7 @@ on:
       - main
   schedule:
     - cron: '0 0/3 * * *'
-  watch:
-    workflow_dispatch:
+  workflow_dispatch:
    
 jobs:
    Task:
