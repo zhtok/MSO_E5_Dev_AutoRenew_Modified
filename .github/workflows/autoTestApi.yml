@@ -7,7 +7,7 @@ on:
     branches: 
       - main
   schedule:
-    - cron: '30 * * * *'
+    - cron: '0 0/3 * * *'
   watch:
     types: [started]
    
@@ -46,8 +46,8 @@ jobs:
         rm -f configkey.txt    
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email testApi@chrisvcg.top
-        git config --global user.name testApiBot
+        git config --global user.email chrisvcg_msdev@outlook.com
+        git config --global user.name chrisvcg_msdev
         git add .
         git commit -m "update new refresh token with testApiBot" -a
     - name: Push changes
